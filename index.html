@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Materials</title>
+    <!-- Add Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: url('bk.jpg') no-repeat center center fixed; /* Use your downloaded Milky Way image */
+            background-size: cover;
+            color: #ffffff; /* Set text color to white for better contrast against the dark background */
+        
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent background */
+            color: #70e000;
+            padding: 20px;
+            font-size: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #70e000;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+            color: white;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 14px;
+            display: flex;
+            /* justify-content: space-between; */
+            align-items: center;
+            justify-content: center;
+            display: flexbox;
+            gap: 20px;
+        }
+
+        .social-media {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-media a {
+            color: #70e000;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .social-media a:hover {
+            color: #70e000;
+        }
+
+        .social-media a i {
+            font-size: 24px;
+        }
+
+        h2 {
+            color: #ffffff;
+        }
+
+        .semester-dropdown {
+            margin: 20px auto;
+            padding: 10px;
+            font-size: 18px;
+            border: 1px solid #000000;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .subject-list {
+            margin-top: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .subject-list h2 {
+            color: #000000;
+        }
+
+        .subject-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .subject {
+            background-color: #000000;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .subject.active {
+            background-color: #70e000;
+            color: #000000;
+        }
+
+        .subject:hover {
+            background-color: #70e000;
+        }
+
+        .material-item:hover {
+            background-color: #ffffff;
+            color: #ffffff;
+        }
+
+        .materials {
+            display: none;
+            margin-top: 10px;
+            text-align: center;
+            width: 100%;
+            background-color: #14213d;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .material-item {
+            background-color: #ffffff;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+        }
+
+        .material-item a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .material-item a:hover {
+            text-decoration: underline;
+            color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div>Study Materials Portal</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <h1>Select Your Semester</h1>
+
+    <select class="semester-dropdown" id="semesterDropdown" onchange="showSubjects()">
+        <option value="" selected disabled>Select Semester</option>
+        <option value="semester1">Semester 1</option>
+        <option value="semester2">Semester 2</option>
+        <option value="semester3">Semester 3</option>
+        <option value="semester4">Semester 4</option>
+        <option value="semester5">Semester 5</option>
+        <option value="semester6">Semester 6</option>
+        <option value="semester7">Semester 7</option>
+        <option value="semester8">Semester 8</option>
+    </select>
+
+    <div id="selectedSemester" class="subject-list"></div>
+
+    <script>
+        function showSubjects() {
+            var semester = document.getElementById('semesterDropdown').value;
+            var subjectList = document.getElementById('selectedSemester');
+
+            if (semester) {
+                subjectList.innerHTML = `
+                    <h2>${semester.replace('semester', 'Semester ')} Subjects</h2>
+                    <div class="subject-container">
+                        <button class="subject" onclick="toggleMaterials('${semester}subject1', this)">Subject 1</button>
+                        <div id="${semester}subject1" class="materials">
+                            <div class="material-item">
+                                <a href="https://drive.google.com/uc?id=MID_LINK_1" target="_blank">Mid Exam Paper</a>
+                            </div>
+                            <div class="material-item">
+                                <a href="https://drive.google.com/uc?id=END_LINK_1" target="_blank">End Sem Paper</a>
+                            </div>
+                            <div class="material-item">
+                                <a href="https://drive.google.com/uc?id=NOTES_LINK_1" target="_blank">Notes</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="subject-container">
+                        <button class="subject" onclick="toggleMaterials('${semester}subject2', this)">Subject 2</button>
+                        <div id="${semester}subject2" class="materials">
+                            <div class="material-item">
+                                <a href="https://drive.google.com/uc?id=MID_LINK_2" target="_blank">Mid Exam Paper</a>
+                            </div>
+                            <div class="material-item">
+                                <a href="https://drive.google.com/uc?id=END_LINK_2" target="_blank">End Sem Paper</a>
+                            </div>
+                            <div class="material-item">
+                                <a href="https://drive.google.com/uc?id=NOTES_LINK_2" target="_blank">Notes</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="subject-container">
+                        <button class="subject" onclick="toggleMaterials('${semester}subject3', this)">Subject 3</button>
+                        <div id="${semester}subject3" class="materials">
+                            <div class="material-item">
+                                <a href="https://drive.google.com/uc?id=MID_LINK_3" target="_blank">Mid Exam Paper</a>
+                            </div>
+                            <div class="material-item">
+                                <a href="https://drive.google.com/uc?id=END_LINK_3" target="_blank">End Sem Paper</a>
+                            </div>
+                            <div class="material-item">
+                                <a href="https://drive.google.com/uc?id=NOTES_LINK_3" target="_blank">Notes</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                subjectList.innerHTML = '';
+            }
+        }
+
+        function toggleMaterials(subjectId, element) {
+            var materials = document.getElementById(subjectId);
+
+            // Close all other open materials
+            var allMaterials = document.querySelectorAll('.materials');
+            var allSubjects = document.querySelectorAll('.subject');
+            allMaterials.forEach(function (mat) {
+                if (mat.id !== subjectId) mat.style.display = 'none';
+            });
+
+            // Remove active class from all subjects
+            allSubjects.forEach(function (sub) {
+                sub.classList.remove('active');
+            });
+
+            // Toggle the selected materials and apply active class
+            if (materials.style.display === "none" || materials.style.display === "") {
+                materials.style.display = "block";
+                element.classList.add('active');
+            } else {
+                materials.style.display = "none";
+                element.classList.remove('active');
+            }
+        }
+    </script>
+
+    <footer>
+        <div>&copy; 2024 Made by Anup Singh </div>
+        <div class="social-media">
+            <a href="https://www.linkedin.com/in/connectanupsingh/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/anup.singhhhh?igsh=MXQ0cWFobHVxZGc5bQ==" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+</body>
+
+</html>
